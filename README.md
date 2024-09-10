@@ -8,6 +8,8 @@ We also create a 'brightness loss' which forces the model to steer towards brigh
 The brightness loss is as follows: 
 
 **def brightness_loss(images, target_brightness):**
+
+
     grayscale_images = images.mean(dim=1, keepdim=True)
     error = torch.abs(grayscale_images - target_brightness).mean()
     return error

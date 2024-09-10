@@ -29,8 +29,6 @@ if "mps" == torch_device: os.environ['PYTORCH_ENABLE_MPS_FALLBACK'] = "1"
 
 # Load the autoencoder model which will be used to decode the latents into image space.
 import os
-os.environ["https_proxy"] = "http://185.46.212.90:80"
-os.environ["http_proxy"] = "http://185.46.212.90:80"
 vae = AutoencoderKL.from_pretrained("CompVis/stable-diffusion-v1-4", subfolder="vae")
 
 # Load the tokenizer and text encoder to tokenize and encode the text.
@@ -202,16 +200,6 @@ birb_embedpolygon = torch.load(os.path.join(current_directory, 'Polygon', 'learn
 import torch
 import os
 import gradio as gr
-
-# Load the embeddings
-# birb_embed = torch.load('/raid/users/mohammadibrahim-st/TSAI/Assignment24/Depth/learned_embeds.bin')
-# birb_embedjerry = torch.load("/raid/users/mohammadibrahim-st/TSAI/Assignment24/Jerry mouse/learned_embeds.bin")
-# birb_embedmobius = torch.load('/raid/users/mohammadibrahim-st/TSAI/Assignment24/Mobius/learned_embeds.bin')
-# birb_embedoilpaint = torch.load('/raid/users/mohammadibrahim-st/TSAI/Assignment24/Oil paint/learned_embeds.bin')
-# birb_embedpolygon = torch.load('/raid/users/mohammadibrahim-st/TSAI/Assignment24/Polygon/learned_embeds.bin')
-
-# Set GRADIO temp directory
-os.environ["GRADIO_TEMP_DIR"] = "/raid/users/mohammadibrahim-st/inpaintAppMemoryOptimised/tmp"
 
 def generate_image(prompt, selected_embedding, blossval):
     # Map selected_embedding to corresponding embedding file and key

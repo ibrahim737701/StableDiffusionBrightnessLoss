@@ -5,6 +5,13 @@ This project uses stable diffusion to generate images.
 We replace the embeddings of the word 'puppy' with another learned embedding from huggingface.
 We also create a 'brightness loss' which forces the model to steer towards brighter generations.
 
+The brightness loss is as follows: 
+
+**def brightness_loss(images, target_brightness):**
+    grayscale_images = images.mean(dim=1, keepdim=True)
+    error = torch.abs(grayscale_images - target_brightness).mean()
+    return error
+
 Below are some examples:-
 # Prompts for all the images are - "A mouse in the style of puppy"
 Where puppy is replaces by each learned embedding listed below

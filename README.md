@@ -1,3 +1,5 @@
+Control brightness of your image while the denoisign process is happening within a diffusion model.
+
 # StableDiffusionBrightnessLoss
 
 This project uses stable diffusion to generate images. 
